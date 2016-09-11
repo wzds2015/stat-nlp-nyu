@@ -2,22 +2,22 @@
 *.jar
 *.ear
 *.war
-.idea
-.history
+.idea/*
+.history/*
 
 */*.class
 */*.jar
 */*.ear
 */*.war
-*/.idea
-*/.history
+*/.idea/*
+*/.history/*
 
 */*/*.class
 */*/*.jar
 */*/*.ear
 */*/*.war
 */*/target
-*/*/.idea
-*/*/.history
+*/*/.idea/*
+*/*/.history/*
 
-*/*/data
+*/*/data/*

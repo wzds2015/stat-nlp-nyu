@@ -1,0 +1,53 @@
+run
+last compile:run
+exit
+run
+exit
+projects
+run
+run LanguageModelTester -model baseline
+runMain LanguageModelTester -model baseline
+runMain
+runMain nlp.assignments.LanguageModelTester -model baseline
+runMain nlp.assignments.LanguageModelTester -model katz-trigram
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -verbose
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -verbose > result_output
+exit
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -verbose > /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/ass1/stat-nlp-nyu/hw1/result1
+exit
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -verbose > /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/ass1/stat-nlp-nyu/hw1/result1c
+ccccccccccccexit
+exit
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -verbose -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+exit
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 50
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+last compile:runMain
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+exit
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+clear
+exit
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+run
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 20 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 10 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.3 -K 100 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.4 -l2 0.5 -K 100 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.1 -l2 0.2 -K 100 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.8 -l2 0.1 -K 100 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.9 -l2 0.1 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.9 -l2 0.05 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 1.0 -l2 0.0 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.95 -l2 0.03 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.9 -l2 0.1 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.8 -l2 0.2 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.9 -l2 0.1 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.9 -l2 0.0 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0.4 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.3 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+exit
