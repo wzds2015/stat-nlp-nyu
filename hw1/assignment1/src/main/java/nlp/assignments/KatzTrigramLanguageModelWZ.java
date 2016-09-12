@@ -39,7 +39,7 @@ class KatzTrigramLanguageModelWZ implements LanguageModel {
         double bigramCount = bigramCounter.getCount(previousWord, word);
         double unigramCount = wordCounter.getCount(word);
         if (unigramCount == 0) {
-            System.out.println("UNKNOWN Word: " + word);
+            //System.out.println("UNKNOWN Word: " + word);
             unigramCount = wordCounter.getCount(UNKNOWN);
         }
         return lambda1 * trigramCount + lambda2 * bigramCount

@@ -51,3 +51,10 @@ runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.5 -l2 0
 runMain nlp.assignments.LanguageModelTester -model katz-trigram -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
 runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.3 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
 exit
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.3 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelTester -model katz-trigram-wz -l1 0.3 -l2 0.3 -K 50 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelCrossValidationTester -model katz-trigram-wz -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+exit
+runMain nlp.assignments.LanguageModelCrossValidationTester -model katz-trigram-wz -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+exit

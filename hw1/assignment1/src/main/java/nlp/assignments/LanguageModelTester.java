@@ -406,7 +406,10 @@ public class LanguageModelTester {
 		// testSentenceCollection);
 		double hubPerplexity = calculatePerplexity(languageModel,
 				extractCorrectSentenceList(speechNBestLists));
-		// System.out.println("WSJ Perplexity:  " + wsjPerplexity);
+
+		double wsjPerplexity = calculatePerplexity(languageModel, validationSentenceCollection);
+
+		System.out.println("WSJ Perplexity:  " + wsjPerplexity);
 		System.out.println("HUB Perplexity:  " + hubPerplexity);
 		System.out.println("WER Baselines:");
 		System.out.println("  Best Path:  "
