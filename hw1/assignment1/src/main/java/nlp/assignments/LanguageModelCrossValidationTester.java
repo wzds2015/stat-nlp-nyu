@@ -317,21 +317,21 @@ public class LanguageModelCrossValidationTester {
         return vocabulary;
     }
 
-    static double[] retrieveParameterFromInd(int ind) {
-        int K = (ind % 11) * 5 + 10;
-        double lambda1, lambda2;
-        int lambdaInd = ind / 11;
-        if (lambdaInd <= 9) { lambda1 = 0.1; lambda2 = lambdaInd * 0.1; }
-        else if (lambdaInd > 9  && lambdaInd <= 17) { lambda1 = 0.2; lambda2 = (lambdaInd-9 )*0.1; }
-        else if (lambdaInd > 17 && lambdaInd <= 24) { lambda1 = 0.3; lambda2 = (lambdaInd-17)*0.1; }
-        else if (lambdaInd > 24 && lambdaInd <= 30) { lambda1 = 0.4; lambda2 = (lambdaInd-24)*0.1; }
-        else if (lambdaInd > 30 && lambdaInd <= 35) { lambda1 = 0.5; lambda2 = (lambdaInd-30)*0.1; }
-        else if (lambdaInd > 35 && lambdaInd <= 39) { lambda1 = 0.6; lambda2 = (lambdaInd-35)*0.1; }
-        else if (lambdaInd > 39 && lambdaInd <= 42) { lambda1 = 0.7; lambda2 = (lambdaInd-39)*0.1; }
-        else if (lambdaInd > 42 && lambdaInd <= 44) { lambda1 = 0.8; lambda2 = (lambdaInd-42)*0.1; }
-        else { lambda1 = 0.9; lambda2 = 0.1; }
-        return new double[]{lambda1, lambda2, K};
-    }
+//    static double[] retrieveParameterFromInd(int ind) {
+//        int K = (ind % 11) * 5 + 10;
+//        double lambda1, lambda2;
+//        int lambdaInd = ind / 11;
+//        if (lambdaInd <= 9) { lambda1 = 0.1; lambda2 = lambdaInd * 0.1; }
+//        else if (lambdaInd > 9  && lambdaInd <= 17) { lambda1 = 0.2; lambda2 = (lambdaInd-9 )*0.1; }
+//        else if (lambdaInd > 17 && lambdaInd <= 24) { lambda1 = 0.3; lambda2 = (lambdaInd-17)*0.1; }
+//        else if (lambdaInd > 24 && lambdaInd <= 30) { lambda1 = 0.4; lambda2 = (lambdaInd-24)*0.1; }
+//        else if (lambdaInd > 30 && lambdaInd <= 35) { lambda1 = 0.5; lambda2 = (lambdaInd-30)*0.1; }
+//        else if (lambdaInd > 35 && lambdaInd <= 39) { lambda1 = 0.6; lambda2 = (lambdaInd-35)*0.1; }
+//        else if (lambdaInd > 39 && lambdaInd <= 42) { lambda1 = 0.7; lambda2 = (lambdaInd-39)*0.1; }
+//        else if (lambdaInd > 42 && lambdaInd <= 44) { lambda1 = 0.8; lambda2 = (lambdaInd-42)*0.1; }
+//        else { lambda1 = 0.9; lambda2 = 0.1; }
+//        return new double[]{lambda1, lambda2, K};
+//    }
 
     static void crossValidationWriter(double[] l1, double[] l2, double[] k, double[] perp, int len) {
 
@@ -340,6 +340,20 @@ public class LanguageModelCrossValidationTester {
             for (int i=0; i<len; i++) {
                 if (i != len-1) { writer.write(l1[i]+","+l2[i]+","+k[i]+","+perp[i]+"\n"); }
                 else { writer.write(l1[i]+","+l2[i]+","+k[i]+","+perp[i]+"\n"); }
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void crossValidationWriterKatz(double[] l1, double[] l2, double[] perp, double[] error, int len) {
+
+        try {
+            FileWriter writer = new FileWriter("/Users/admin/Desktop/CV_NLP.txt", true);
+            for (int i=0; i<len; i++) {
+                if (i != len-1) { writer.write(l1[i]+","+l2[i]+","+perp[i]+error[i]+"\n"); }
+                else { writer.write(l1[i]+","+l2[i]+","+perp[i]+error[i]+"\n"); }
             }
             writer.close();
         } catch (IOException e) {
@@ -421,8 +435,40 @@ public class LanguageModelCrossValidationTester {
             languageModel = new KatzBigramLanguageModel(
                     trainingSentenceCollection);
         } else if (model.equalsIgnoreCase("katz-trigram")) {
-            languageModel = new KatzTrigramLanguageModel(
-                    trainingSentenceCollection);
+            double lambda1;
+            double lambda2;
+            int ind = 0;
+            double minPerp = Double.MAX_VALUE;
+            int minInd = -1;
+            double[] perpArray = new double[2500];
+            double[] lambda1Array = new double[2500];
+            double[] lambda2Array = new double[2500];
+            double[] wordErrorArray = new double[2500];
+
+            for (int i=1; i<100; i+=2) {
+                for (int j=0; j<100-i; j+=2) {
+                        lambda1 = i * 0.01;
+                        lambda2 = j * 0.01;
+                        languageModel = new KatzTrigramLanguageModel(trainingSentenceCollection, lambda1, lambda2);
+                        perpArray[ind] = calculatePerplexity(languageModel, validationSentenceCollection);
+                        wordErrorArray[ind] = calculateWordErrorRate(languageModel, speechNBestLists, verbose);
+                        System.out.println("lambda1: "+lambda1+", lambda2: "+lambda2+", HUB WER: "+wordErrorArray[ind]);
+                        lambda1Array[ind] = lambda1;
+                        lambda2Array[ind] = lambda2;
+                        if (perpArray[ind] < minPerp) {
+                            minPerp = perpArray[ind];
+                            minInd = ind;
+                        }
+                        ind++;
+                }
+            }
+
+            //double[] bestPara = retrieveParameterFromInd(minInd);
+            lambda1 = lambda1Array[minInd];
+            lambda2 = lambda2Array[minInd];
+            System.out.println("Best paprameters: lambda1 -> "+lambda1+"; lambda2 -> "+lambda2);
+            languageModel = new KatzTrigramLanguageModel(trainingSentenceCollection, lambda1, lambda2);
+            crossValidationWriterKatz(lambda1Array, lambda2Array, perpArray, wordErrorArray, 45);
         } else if (model.equalsIgnoreCase("katz-trigram-wz")) {
             double lambda1;
             double lambda2;

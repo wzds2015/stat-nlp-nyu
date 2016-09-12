@@ -17,8 +17,9 @@ class KatzTrigramLanguageModel implements LanguageModel {
 	static final String START = "<S>";
 	static final String STOP = "</S>";
 	static final String UNKNOWN = "*UNKNOWN*";
-	static final double lambda1 = 0.5;
-	static final double lambda2 = 0.3;
+	double lambda1, lambda2;
+//	static final double lambda1 = 0.5;
+//	static final double lambda2 = 0.3;
 
 	Counter<String> wordCounter = new Counter<String>();
 	CounterMap<String, String> bigramCounter = new CounterMap<String, String>();
@@ -31,7 +32,7 @@ class KatzTrigramLanguageModel implements LanguageModel {
 		double bigramCount = bigramCounter.getCount(previousWord, word);
 		double unigramCount = wordCounter.getCount(word);
 		if (unigramCount == 0) {
-			System.out.println("UNKNOWN Word: " + word);
+			//System.out.println("UNKNOWN Word: " + word);
 			unigramCount = wordCounter.getCount(UNKNOWN);
 		}
 		return lambda1 * trigramCount + lambda2 * bigramCount
@@ -80,7 +81,8 @@ class KatzTrigramLanguageModel implements LanguageModel {
 		return sentence;
 	}
 
-	public KatzTrigramLanguageModel(Collection<List<String>> sentenceCollection) {
+	public KatzTrigramLanguageModel(Collection<List<String>> sentenceCollection, double l1, double l2) {
+		lambda1 = l1;  lambda2 = l2;
 		for (List<String> sentence : sentenceCollection) {
 			List<String> stoppedSentence = new ArrayList<String>(sentence);
 			stoppedSentence.add(0, START);

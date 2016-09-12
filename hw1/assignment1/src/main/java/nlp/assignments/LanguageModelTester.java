@@ -390,8 +390,10 @@ public class LanguageModelTester {
 			languageModel = new KatzBigramLanguageModel(
 					trainingSentenceCollection);
 		} else if (model.equalsIgnoreCase("katz-trigram")) {
+			double lambda1 = Double.parseDouble(argMap.get("-l1"));
+			double lambda2 = Double.parseDouble(argMap.get("-l2"));
 			languageModel = new KatzTrigramLanguageModel(
-					trainingSentenceCollection);
+					trainingSentenceCollection, lambda1, lambda2);
 		} else if (model.equalsIgnoreCase("katz-trigram-wz")) {
 			double lambda1 = Double.parseDouble(argMap.get("-l1"));
 			double lambda2 = Double.parseDouble(argMap.get("-l2"));
