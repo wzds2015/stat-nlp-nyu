@@ -72,3 +72,7 @@ runMain nlp.assignments.LanguageModelTester -model bigram -path /Users/admin/Doc
 runMain nlp.assignments.LanguageModelTester -model katz-bigram -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
 exit
 runMain nlp.assignments.LanguageModelCrossValidationTester -model katz-trigram -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+runMain nlp.assignments.LanguageModelCrossValidationTester -model katz-trigram-wz4 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+exit
+runMain nlp.assignments.LanguageModelCrossValidationTester -model katz-trigram-wz4 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+exit

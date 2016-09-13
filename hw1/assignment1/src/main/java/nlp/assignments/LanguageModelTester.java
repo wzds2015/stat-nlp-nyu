@@ -399,6 +399,11 @@ public class LanguageModelTester {
 			double lambda2 = Double.parseDouble(argMap.get("-l2"));
 			int K = Integer.parseInt(argMap.get("-K"));
 			languageModel = new KatzTrigramLanguageModelWZ(trainingSentenceCollection, lambda1, lambda2, K);
+		} else if (model.equalsIgnoreCase("katz-trigram-wz4")) {
+			double lambda1 = Double.parseDouble(argMap.get("-l1"));
+			double lambda2 = Double.parseDouble(argMap.get("-l2"));
+			int K = Integer.parseInt(argMap.get("-K"));
+			languageModel = new KatzTrigramLanguageModelWZFourPara(trainingSentenceCollection, lambda1, lambda2, K);
 		} else {
 			throw new RuntimeException("Unknown model descriptor: " + model);
 		}

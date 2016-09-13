@@ -14,15 +14,16 @@ import nlp.util.MapFactory;
  * A dummy language model -- uses empirical unigram counts, plus a single
  * ficticious count for unknown words.
  */
-class KatzTrigramLanguageModelWZ implements LanguageModel {
+class KatzTrigramLanguageModelWZFourPara implements LanguageModel {
 
     static final String START = "<S>";
     static final String STOP = "</S>";
     static final String UNKNOWN = "*UNKNOWN*";
-//    static final double lambda1 = 0.5;
+    //    static final double lambda1 = 0.5;
 //    static final double lambda2 = 0.3;
     double lambda1;
     double lambda2;
+    double lambda3 = 0.3;
 
     Counter<String> wordCounter = new Counter<String>();
     CounterMap<String, String> bigramCounter = new CounterMap<String, String>();
@@ -34,6 +35,7 @@ class KatzTrigramLanguageModelWZ implements LanguageModel {
 
     public double getTrigramProbability(String prePreviousWord,
                                         String previousWord, String word) {
+        double l1 = lambda1; double l2 = lambda2; double l3 = lambda3;
         double trigramCount = trigramCounter.getCount(prePreviousWord
                 + previousWord, word);
         double bigramCount = bigramCounter.getCount(previousWord, word);
@@ -43,8 +45,14 @@ class KatzTrigramLanguageModelWZ implements LanguageModel {
             unigramCount = wordCounter.getCount(UNKNOWN);
         }
 
-        return lambda1 * trigramCount + lambda2 * bigramCount
-                + (1.0 - lambda1 - lambda2) * unigramCount;
+        if (trigramCount > 0.8) { l1 += l3; }
+        else if (bigramCount > 0.8) { l2 += l3; }
+        else {
+            l1 += l3 / 3;
+            l2 += l3 / 3;
+        }
+        return l1 * trigramCount + l2 * bigramCount
+                + (1.0 - l1 - l2) * unigramCount;
     }
 
     public double getSentenceProbability(List<String> sentence) {
@@ -89,7 +97,7 @@ class KatzTrigramLanguageModelWZ implements LanguageModel {
         return sentence;
     }
 
-    public KatzTrigramLanguageModelWZ(Collection<List<String>> sentenceCollection,
+    public KatzTrigramLanguageModelWZFourPara(Collection<List<String>> sentenceCollection,
                                       double l1, double l2, int K) {
         lambda1 = l1;
         lambda2 = l2;
@@ -147,4 +155,3 @@ class KatzTrigramLanguageModelWZ implements LanguageModel {
     }
 
 }
-

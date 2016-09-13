@@ -1,8 +1,8 @@
-[0m[[0minfo[0m] [0mRunning nlp.assignments.LanguageModelTester -model katz-trigram -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data -verbose -l1 0.07 -l2 0.84[0m
-[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0minfo[0m] [0mRunning nlp.assignments.LanguageModelTester -model katz-trigram-wz4 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data -verbose -l1 0.6 -l2 0.1 -K 25[0m
 [0m[[0mdebug[0m] [0m  Classpath:[0m
 [0m[[0mdebug[0m] [0m	/Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/stat-nlp-nyu/hw1/assignment1/target/scala-2.10/classes[0m
 [0m[[0mdebug[0m] [0m	/Users/admin/.sbt/boot/scala-2.10.6/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
 [0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
 [0m[[0mdebug[0m] [0m	Thread run-main-0 exited.[0m
 [0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m

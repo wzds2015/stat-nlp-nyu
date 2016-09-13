@@ -1,3 +1,14 @@
+[0m[[0minfo[0m] [0mSet current project to assignment1 (in build file:/Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/stat-nlp-nyu/hw1/assignment1/)[0m
+[0m[[0minfo[0m] [0mRunning nlp.assignments.LanguageModelTester -model katz-trigram-wz4 -path /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data -verbose -l1 0.6 -l2 0.1 -K 25[0m
+Using base path: /Users/admin/Documents/Study/software/Programming/Course/Machine_Learning/NLP/Course_Fall_2016/Assignment/data
+Using model: katz-trigram-wz4
+WSJ Perplexity:  726.8305938047055
+HUB Perplexity:  669.9468076938178
+WER Baselines:
+  Best Path:  0.0
+  Worst Path: 0.21014009339559706
+  Avg Path:   0.11927055936159012
+
 GUESS:	AM: -2.66E03	LM: -6.90E01	Total: -2.73E03	[in, tokyo, foreign, exchange, trading, yesterday, the, yen, increased, against, the, dollar]
 GOLD:	AM: -2.66E03	LM: -6.90E01	Total: -2.73E03	[in, tokyo, foreign, exchange, trading, yesterday, the, yen, increased, against, the, dollar]
 
@@ -300,3 +311,6 @@ GOLD:	AM: -2.13E03	LM: -9.45E01	Total: -2.22E03	[yesterday, many, corn, futures,
 
 GUESS:	AM: -9.69E02	LM: -1.44E01	Total: -9.84E02	[he, could, n't, be, reached, for, comment]
 GOLD:	AM: -9.67E02	LM: -1.82E01	Total: -9.85E02	[she, could, n't, be, reached, for, comment]
+HUB Word Error Rate: 0.06470980653769179
+Generated Sentences:
+[0m[[32msuccess[0m] [0mTotal time: 4 s, completed Sep 12, 2016 10:18:56 PM[0m

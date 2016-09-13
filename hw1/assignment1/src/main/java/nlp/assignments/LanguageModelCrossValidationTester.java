@@ -511,6 +511,48 @@ public class LanguageModelCrossValidationTester {
             System.out.println("Best paprameters: lambda1 -> "+lambda1+"; lambda2 -> "+lambda2+"; K -> "+K);
             languageModel = new KatzTrigramLanguageModelWZ(trainingSentenceCollection, lambda1, lambda2, K);
             crossValidationWriter(lambda1Array, lambda2Array, KArray, perpArray, 495);
+        } else if (model.equalsIgnoreCase("katz-trigram-wz4")) {
+            double lambda1;
+            double lambda2;
+            int K;
+            int ind = 0;
+            double minPerp = Double.MAX_VALUE;
+            int minInd = -1;
+            double[] perpArray = new double[396];
+            double[] lambda1Array = new double[396];
+            double[] lambda2Array = new double[396];
+            double[] KArray = new double[396];
+            double[] wordErrorArray = new double[396];
+
+            for (int i=1; i<8; i++) {
+                for (int j=0; j<8-i; j++) {
+                    for (int k=10; k<=60; k+=5) {
+                        lambda1 = i * 0.1;
+                        lambda2 = j * 0.1;
+                        K = k;
+                        languageModel = new KatzTrigramLanguageModelWZFourPara(trainingSentenceCollection, lambda1, lambda2, K);
+                        perpArray[ind] = calculatePerplexity(languageModel, validationSentenceCollection);
+                        wordErrorArray[ind] = calculateWordErrorRate(languageModel, speechNBestLists, verbose);
+                        System.out.println("lambda1: "+lambda1+", lambda2: "+lambda2+", K: "+K+", HUB WER: "+wordErrorArray[ind]);
+                        lambda1Array[ind] = lambda1;
+                        lambda2Array[ind] = lambda2;
+                        KArray[ind] = (double) K;
+                        if (perpArray[ind] < minPerp) {
+                            minPerp = perpArray[ind];
+                            minInd = ind;
+                        }
+                        ind++;
+                    }
+                }
+            }
+
+            //double[] bestPara = retrieveParameterFromInd(minInd);
+            lambda1 = lambda1Array[minInd];
+            lambda2 = lambda2Array[minInd];
+            K = (int) KArray[minInd];
+            System.out.println("Best paprameters: lambda1 -> "+lambda1+"; lambda2 -> "+lambda2+"; K -> "+K);
+            languageModel = new KatzTrigramLanguageModelWZFourPara(trainingSentenceCollection, lambda1, lambda2, K);
+            crossValidationWriter(lambda1Array, lambda2Array, KArray, perpArray, 396);
         } else {
             throw new RuntimeException("Unknown model descriptor: " + model);
         }
